@@ -66,6 +66,13 @@ npm run test:watch   # Run tests in watch mode
 - `POST /api/template/save` - Save current todos as template
 - `POST /api/template/reset` - Replace todos with template items
 
+### Trackers
+- `GET /api/trackers` - Get all trackers for current user
+- `POST /api/trackers` - Create new tracker (max 20)
+- `PUT /api/trackers/:id` - Update tracker (name, icon)
+- `DELETE /api/trackers/:id` - Delete tracker
+- `POST /api/trackers/:id/reset` - Reset tracker's last_reset to now
+
 ## Notes
 - Uses ES modules (`"type": "module"` in package.json)
 - Session cookies are httpOnly and secure in production
