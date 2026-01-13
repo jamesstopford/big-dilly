@@ -41,15 +41,17 @@ function createTodosStore() {
         const data = await todosApi.getAll();
         update(state => ({
           ...state,
-          items: data.todos,
+          items: data?.todos || [],
           loading: false
         }));
+        return { success: true };
       } catch (error) {
         update(state => ({
           ...state,
           loading: false,
           error: error.message || 'Failed to load todos'
         }));
+        return { success: false, error: error.message };
       }
     },
 
@@ -57,15 +59,17 @@ function createTodosStore() {
      * Create a new todo
      */
     async create(text) {
-      const trimmedText = text.trim();
+      const trimmedText = text?.trim();
       if (!trimmedText) return { success: false, error: 'Todo text is required' };
 
       try {
         const data = await todosApi.create(trimmedText);
-        update(state => ({
-          ...state,
-          items: [...state.items, data.todo]
-        }));
+        if (data?.todo) {
+          update(state => ({
+            ...state,
+            items: [...state.items, data.todo]
+          }));
+        }
         return { success: true };
       } catch (error) {
         return { success: false, error: error.message || 'Failed to create todo' };
@@ -212,7 +216,7 @@ function createTodosStore() {
         const data = await templateApi.reset();
         update(state => ({
           ...state,
-          items: data.todos,
+          items: data?.todos || [],
           templateResetting: false
         }));
         setTemplateFeedback('reset');

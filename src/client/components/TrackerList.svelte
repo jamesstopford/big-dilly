@@ -65,7 +65,7 @@
 
   async function handleReset(event) {
     const { id } = event.detail;
-    const result = await trackersStore.reset(id);
+    const result = await trackersStore.resetTracker(id);
     if (!result.success) {
       console.error('Reset failed:', result.error);
     }
