@@ -25,6 +25,7 @@
   }
 
   function handleClickOutside(event) {
+    // Only close if clicking outside the theme toggle container
     if (showDropdown) {
       showDropdown = false;
     }
@@ -36,7 +37,7 @@
 <div class="theme-toggle">
   <button
     class="theme-button"
-    on:click={toggleDropdown}
+    on:click|stopPropagation={toggleDropdown}
     aria-label="Change theme"
     aria-expanded={showDropdown}
   >
@@ -51,7 +52,7 @@
         <button
           class="dropdown-item"
           class:active={$theme === themeOption}
-          on:click={() => selectTheme(themeOption)}
+          on:click|stopPropagation={() => selectTheme(themeOption)}
         >
           <span class="theme-icon">{@html themeIcons[themeOption]}</span>
           <span>{themeLabels[themeOption]}</span>

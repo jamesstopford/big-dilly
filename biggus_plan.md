@@ -150,7 +150,7 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 - [x] Users can create, edit, delete, and reset TimeSince trackers
 - [x] Trackers display elapsed time in "X days, Y hours" format
 - [x] Maximum 20 trackers enforced
-- [ ] All three themes work correctly (theme toggle not functional - see 5.1)
+- [x] All three themes work correctly
 - [x] Application is responsive on mobile and desktop
 - [ ] All data persists correctly across sessions
 
@@ -158,12 +158,14 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 
 ## Phase 5: Bug Fixes
 
-### 5.1 Theme Selection Not Functional
-- [ ] Fix theme toggle dropdown/selector not applying theme changes
-- [ ] Verify ThemeToggle component is properly calling PUT `/api/user/theme`
-- [ ] Ensure theme CSS class is being applied to document root
-- [ ] Confirm theme preference loads correctly on page refresh
-- [ ] Test all three themes (Light, Dark, Cyber-Neon) switch correctly
+### 5.1 Theme Selection Not Functional [FIXED]
+- [x] Fix theme toggle dropdown/selector not applying theme changes
+- [x] Verify ThemeToggle component is properly calling PUT `/api/user/theme`
+- [x] Ensure theme CSS class is being applied to document root
+- [x] Confirm theme preference loads correctly on page refresh
+- [x] Test all three themes (Light, Dark, Cyber-Neon) switch correctly
+
+**Root Cause:** Click events on dropdown items were bubbling up to the window-level `handleClickOutside` handler, which closed the dropdown before the theme change could be applied. Fixed by adding `|stopPropagation` modifier to click handlers on the theme button and dropdown items.
 
 ### 5.2 Icon Selector Modal Width
 - [ ] Fix icon picker modal/dropdown being too narrow
