@@ -2,8 +2,7 @@
   import { auth, currentUser } from '../stores/auth.js';
   import { theme, THEMES } from '../stores/theme.js';
   import Header from '../components/Header.svelte';
-
-  // Placeholder content - will be replaced with Todo and TimeSince components in later phases
+  import TodoList from '../components/TodoList.svelte';
 </script>
 
 <div class="app-layout">
@@ -12,15 +11,9 @@
   <main class="main-content">
     <div class="container">
       <div class="panels">
-        <!-- Todo Panel Placeholder -->
+        <!-- Todo Panel -->
         <section class="panel">
-          <div class="panel-header">
-            <h2>Todos</h2>
-            <span class="count">0/20</span>
-          </div>
-          <div class="panel-content">
-            <p class="placeholder-text">Todo functionality coming in Phase 2</p>
-          </div>
+          <TodoList />
         </section>
 
         <!-- TimeSince Panel Placeholder -->

@@ -5,6 +5,8 @@ import { fileURLToPath } from 'url';
 import { initializeDatabase } from '../db/init.js';
 import authRoutes from './routes/auth.js';
 import userRoutes from './routes/user.js';
+import todoRoutes from './routes/todos.js';
+import templateRoutes from './routes/template.js';
 import { getDb } from '../db/database.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -36,6 +38,8 @@ app.use(express.static(path.join(__dirname, '../../public')));
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/todos', todoRoutes);
+app.use('/api/template', templateRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

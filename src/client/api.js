@@ -113,11 +113,80 @@ export const user = {
     })
 };
 
+// Todos API
+export const todos = {
+  /**
+   * Get all todos for current user
+   */
+  getAll: () => request('/todos'),
+
+  /**
+   * Create a new todo
+   */
+  create: (text) =>
+    request('/todos', {
+      method: 'POST',
+      body: { text }
+    }),
+
+  /**
+   * Update a todo (text and/or completed)
+   */
+  update: (id, data) =>
+    request(`/todos/${id}`, {
+      method: 'PUT',
+      body: data
+    }),
+
+  /**
+   * Delete a todo
+   */
+  delete: (id) =>
+    request(`/todos/${id}`, {
+      method: 'DELETE'
+    }),
+
+  /**
+   * Reorder todos
+   */
+  reorder: (todoIds) =>
+    request('/todos/reorder', {
+      method: 'PUT',
+      body: { todoIds }
+    })
+};
+
+// Template API
+export const template = {
+  /**
+   * Get user's template items
+   */
+  get: () => request('/template'),
+
+  /**
+   * Save current todos as template
+   */
+  save: () =>
+    request('/template/save', {
+      method: 'POST'
+    }),
+
+  /**
+   * Reset todos to template
+   */
+  reset: () =>
+    request('/template/reset', {
+      method: 'POST'
+    })
+};
+
 // Health check
 export const health = () => request('/health');
 
 export default {
   auth,
   user,
+  todos,
+  template,
   health
 };
