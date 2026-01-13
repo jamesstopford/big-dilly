@@ -43,7 +43,7 @@
   >
     <span class="theme-icon">{@html themeIcons[$theme]}</span>
     <span class="theme-label hide-mobile">{themeLabels[$theme]}</span>
-    <span class="dropdown-arrow">{showDropdown ? '&#9650;' : '&#9660;'}</span>
+    <span class="dropdown-arrow">{@html showDropdown ? '&#9650;' : '&#9660;'}</span>
   </button>
 
   {#if showDropdown}
