@@ -150,9 +150,26 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 - [x] Users can create, edit, delete, and reset TimeSince trackers
 - [x] Trackers display elapsed time in "X days, Y hours" format
 - [x] Maximum 20 trackers enforced
-- [x] All three themes work correctly
+- [ ] All three themes work correctly (theme toggle not functional - see 5.1)
 - [x] Application is responsive on mobile and desktop
 - [ ] All data persists correctly across sessions
+
+---
+
+## Phase 5: Bug Fixes
+
+### 5.1 Theme Selection Not Functional
+- [ ] Fix theme toggle dropdown/selector not applying theme changes
+- [ ] Verify ThemeToggle component is properly calling PUT `/api/user/theme`
+- [ ] Ensure theme CSS class is being applied to document root
+- [ ] Confirm theme preference loads correctly on page refresh
+- [ ] Test all three themes (Light, Dark, Cyber-Neon) switch correctly
+
+### 5.2 Icon Selector Modal Width
+- [ ] Fix icon picker modal/dropdown being too narrow
+- [ ] Last icon in each row is cut off - needs wider container
+- [ ] Ensure icon grid displays all icons fully visible
+- [ ] Verify fix works on both TrackerList (add form) and TrackerItem (edit mode)
 
 ---
 
