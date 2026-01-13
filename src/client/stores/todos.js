@@ -216,7 +216,7 @@ function createTodosStore() {
         const data = await templateApi.reset();
         update(state => ({
           ...state,
-          items: data.todos,
+          items: data?.todos || [],
           templateResetting: false
         }));
         setTemplateFeedback('reset');

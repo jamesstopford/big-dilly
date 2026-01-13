@@ -218,7 +218,7 @@ function createTrackersStore() {
     /**
      * Reset a tracker's last_reset to now
      */
-    async reset(id) {
+    async resetTracker(id) {
       // Optimistic update - set to current time
       const now = new Date().toISOString().replace('Z', '').split('.')[0];
       update(state => ({
@@ -231,12 +231,14 @@ function createTrackersStore() {
       try {
         const data = await trackersApi.reset(id);
         // Update with server response to ensure consistency
-        update(state => ({
-          ...state,
-          items: state.items.map(item =>
-            item.id === id ? data.tracker : item
-          )
-        }));
+        if (data?.tracker) {
+          update(state => ({
+            ...state,
+            items: state.items.map(item =>
+              item.id === id ? data.tracker : item
+            )
+          }));
+        }
         return { success: true };
       } catch (error) {
         // Reload on error to get correct state
