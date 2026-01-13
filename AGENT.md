@@ -45,6 +45,7 @@ npm run test:watch   # Run tests in watch mode
 - `src/db/schema.js` - Table definitions
 
 ## API Endpoints
+### Authentication
 - `POST /api/auth/register` - Create account
 - `POST /api/auth/login` - Log in
 - `POST /api/auth/logout` - Log out
@@ -52,6 +53,18 @@ npm run test:watch   # Run tests in watch mode
 - `POST /api/auth/forgot-password` - Request password reset
 - `POST /api/auth/reset-password` - Reset password with token
 - `PUT /api/user/theme` - Update theme preference
+
+### Todos
+- `GET /api/todos` - Get all todos for current user
+- `POST /api/todos` - Create new todo (max 20)
+- `PUT /api/todos/:id` - Update todo (text, completed)
+- `DELETE /api/todos/:id` - Delete todo
+- `PUT /api/todos/reorder` - Update sort order (body: { todoIds: [...] })
+
+### Template
+- `GET /api/template` - Get user's template items
+- `POST /api/template/save` - Save current todos as template
+- `POST /api/template/reset` - Replace todos with template items
 
 ## Notes
 - Uses ES modules (`"type": "module"` in package.json)

@@ -1,12 +1,15 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
+
+// Use unique database path for this test file
+process.env.DB_PATH = ':memory:';
+
 import { getDb, run, get, all, closeDb } from '../src/db/database.js';
 
 describe('Database utilities', () => {
-  beforeAll(() => {
-    // Use test database
-    process.env.DB_PATH = ':memory:';
-    const db = getDb();
+  let db;
 
+  beforeAll(() => {
+    db = getDb();
     // Create tables for testing
     db.exec(`
       CREATE TABLE IF NOT EXISTS test_items (
@@ -17,13 +20,21 @@ describe('Database utilities', () => {
     `);
   });
 
+  beforeEach(() => {
+    // Clean up before each test
+    run('DELETE FROM test_items');
+    // Reset autoincrement
+    run('DELETE FROM sqlite_sequence WHERE name = ?', ['test_items']);
+  });
+
   afterAll(() => {
     closeDb();
   });
 
   it('should run insert queries', () => {
     const result = run('INSERT INTO test_items (name, value) VALUES (?, ?)', ['test1', 10]);
-    expect(result.lastInsertRowid).toBe(1);
+    // lastInsertRowid can be BigInt or Number depending on better-sqlite3 version
+    expect(Number(result.lastInsertRowid)).toBe(1);
     expect(result.changes).toBe(1);
   });
 
@@ -36,6 +47,8 @@ describe('Database utilities', () => {
   });
 
   it('should get all matching rows', () => {
+    run('INSERT INTO test_items (name, value) VALUES (?, ?)', ['test1', 10]);
+    run('INSERT INTO test_items (name, value) VALUES (?, ?)', ['test2', 20]);
     run('INSERT INTO test_items (name, value) VALUES (?, ?)', ['test3', 30]);
     const rows = all('SELECT * FROM test_items ORDER BY id');
     expect(rows.length).toBe(3);

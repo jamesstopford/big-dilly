@@ -48,38 +48,38 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 
 ---
 
-## Phase 2: Todo Feature
+## Phase 2: Todo Feature [COMPLETE]
 
 ### 2.1 Todo API
-- [ ] GET `/api/todos` - Get all todos for current user
-- [ ] POST `/api/todos` - Create new todo (enforce max 20)
-- [ ] PUT `/api/todos/:id` - Update todo (text, completed)
-- [ ] DELETE `/api/todos/:id` - Delete todo
-- [ ] PUT `/api/todos/reorder` - Update sort order for all todos
-- [ ] Input validation and error handling
+- [x] GET `/api/todos` - Get all todos for current user
+- [x] POST `/api/todos` - Create new todo (enforce max 20)
+- [x] PUT `/api/todos/:id` - Update todo (text, completed)
+- [x] DELETE `/api/todos/:id` - Delete todo
+- [x] PUT `/api/todos/reorder` - Update sort order for all todos
+- [x] Input validation and error handling
 
 ### 2.2 Todo UI Components
-- [ ] TodoList component (container)
-- [ ] TodoItem component (checkbox, text, edit mode, delete button)
-- [ ] Add todo input field
-- [ ] Inline editing on text click
-- [ ] Completed state styling (strikethrough, dimmed)
-- [ ] Count display (X/20 todos)
+- [x] TodoList component (container)
+- [x] TodoItem component (checkbox, text, edit mode, delete button)
+- [x] Add todo input field
+- [x] Inline editing on text click
+- [x] Completed state styling (strikethrough, dimmed)
+- [x] Count display (X/20 todos)
 
 ### 2.3 Drag-and-Drop
-- [ ] Integrate SortableJS or similar lightweight library
-- [ ] Visual drop indicator
-- [ ] Optimistic UI updates
-- [ ] Smooth drag animations
-- [ ] Touch-friendly drag handles for mobile
-- [ ] Persist new order to backend
+- [x] Integrate SortableJS or similar lightweight library
+- [x] Visual drop indicator
+- [x] Optimistic UI updates
+- [x] Smooth drag animations
+- [x] Touch-friendly drag handles for mobile
+- [x] Persist new order to backend
 
 ### 2.4 Template System
-- [ ] GET `/api/template` - Get user's template items
-- [ ] POST `/api/template/save` - Save current todos as template
-- [ ] POST `/api/template/reset` - Replace all todos with template items
-- [ ] Save Template button with visual feedback
-- [ ] Reset to Template button with visual feedback
+- [x] GET `/api/template` - Get user's template items
+- [x] POST `/api/template/save` - Save current todos as template
+- [x] POST `/api/template/reset` - Replace all todos with template items
+- [x] Save Template button with visual feedback
+- [x] Reset to Template button with visual feedback
 
 ---
 
