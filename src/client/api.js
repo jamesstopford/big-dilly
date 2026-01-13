@@ -5,7 +5,7 @@
 
 import { networkStore } from './stores/network.js';
 
-const API_BASE = '/api';
+const API_BASE = 'api';
 
 /**
  * Network error types that should trigger retry
