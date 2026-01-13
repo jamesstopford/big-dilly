@@ -229,7 +229,14 @@
     font-size: 1.25rem;
     color: inherit;
     cursor: pointer;
-    padding: 0 0.5rem;
+    padding: 0.5rem;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -0.5rem;
+    margin-left: 0;
   }
 
   .add-tracker {
@@ -254,8 +261,8 @@
     padding: 0.5rem;
     cursor: pointer;
     transition: border-color 0.2s ease;
-    width: 2.75rem;
-    height: 2.75rem;
+    min-width: 44px;
+    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -292,7 +299,9 @@
     background: none;
     border: 2px solid transparent;
     border-radius: var(--radius-sm);
-    padding: 0.375rem;
+    padding: 0.5rem;
+    min-width: 44px;
+    min-height: 44px;
     cursor: pointer;
     transition: all 0.2s ease;
     display: flex;
@@ -316,6 +325,8 @@
 
   .add-btn {
     padding: 0.75rem;
+    min-width: 44px;
+    min-height: 44px;
     flex-shrink: 0;
   }
 

@@ -164,7 +164,11 @@
     color: var(--accent);
     cursor: pointer;
     font-size: inherit;
-    padding: 0;
+    padding: 0.5rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .link-button:hover {

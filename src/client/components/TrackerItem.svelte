@@ -278,9 +278,12 @@
     font-weight: 500;
     color: var(--text-primary);
     cursor: text;
-    padding: 0.125rem 0.25rem;
+    padding: 0.5rem 0.25rem;
+    min-height: 44px;
     border-radius: var(--radius-sm);
     word-break: break-word;
+    display: flex;
+    align-items: center;
   }
 
   .tracker-name:hover {
@@ -307,7 +310,8 @@
   }
 
   .btn-small {
-    padding: 0.375rem 0.75rem;
+    padding: 0.5rem 0.75rem;
+    min-height: 44px;
     font-size: 0.875rem;
   }
 
@@ -319,6 +323,10 @@
     cursor: pointer;
     font-weight: 500;
     transition: background-color 0.2s ease;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .btn-reset:hover {
@@ -331,7 +339,9 @@
   }
 
   .btn-icon {
-    padding: 0.375rem;
+    padding: 0.75rem;
+    min-width: 44px;
+    min-height: 44px;
     background: none;
     border: none;
     color: var(--text-muted);
@@ -396,8 +406,8 @@
     padding: 0.25rem;
     cursor: pointer;
     transition: border-color 0.2s ease;
-    width: 2.5rem;
-    height: 2.5rem;
+    min-width: 44px;
+    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -429,7 +439,9 @@
     background: none;
     border: 2px solid transparent;
     border-radius: var(--radius-sm);
-    padding: 0.375rem;
+    padding: 0.5rem;
+    min-width: 44px;
+    min-height: 44px;
     cursor: pointer;
     transition: all 0.2s ease;
     display: flex;
@@ -449,7 +461,8 @@
 
   .edit-input {
     flex: 1;
-    padding: 0.5rem;
+    padding: 0.625rem 0.5rem;
+    min-height: 44px;
     border: 1px solid var(--accent);
     border-radius: var(--radius-sm);
     background-color: var(--bg-primary);

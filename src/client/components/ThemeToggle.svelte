@@ -70,7 +70,8 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 0.75rem;
+    padding: 0.625rem 0.75rem;
+    min-height: 44px;
     background-color: var(--bg-tertiary);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
@@ -116,6 +117,7 @@
     gap: 0.75rem;
     width: 100%;
     padding: 0.75rem 1rem;
+    min-height: 44px;
     background: none;
     border: none;
     color: var(--text-primary);

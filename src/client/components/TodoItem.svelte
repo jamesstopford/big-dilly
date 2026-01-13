@@ -146,10 +146,15 @@
   .drag-handle {
     cursor: grab;
     color: var(--text-muted);
-    padding: 0.25rem;
+    padding: 0.75rem;
+    min-width: 44px;
+    min-height: 44px;
     display: flex;
     align-items: center;
+    justify-content: center;
     touch-action: none;
+    margin: -0.5rem;
+    margin-right: 0;
   }
 
   .drag-handle:active {
@@ -164,20 +169,25 @@
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
     flex-shrink: 0;
+    min-width: 44px;
+    min-height: 44px;
+    margin: -0.5rem;
   }
 
   .checkbox-wrapper input[type="checkbox"] {
     position: absolute;
     opacity: 0;
-    width: 0;
-    height: 0;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
   }
 
   .checkbox-custom {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     border: 2px solid var(--border);
     border-radius: var(--radius-sm);
     background-color: var(--bg-primary);
@@ -185,6 +195,7 @@
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
+    pointer-events: none;
   }
 
   .checkbox-wrapper:hover .checkbox-custom {
@@ -214,10 +225,13 @@
     flex: 1;
     color: var(--text-primary);
     cursor: text;
-    padding: 0.25rem;
+    padding: 0.625rem 0.5rem;
+    min-height: 44px;
     border-radius: var(--radius-sm);
     word-break: break-word;
     min-width: 0;
+    display: flex;
+    align-items: center;
   }
 
   .todo-text:hover {
@@ -232,7 +246,8 @@
 
   .edit-input {
     flex: 1;
-    padding: 0.25rem 0.5rem;
+    padding: 0.625rem 0.5rem;
+    min-height: 44px;
     border: 1px solid var(--accent);
     border-radius: var(--radius-sm);
     background-color: var(--bg-primary);
@@ -249,7 +264,9 @@
 
   .delete-btn {
     opacity: 0;
-    padding: 0.375rem;
+    padding: 0.75rem;
+    min-width: 44px;
+    min-height: 44px;
     background: none;
     border: none;
     color: var(--text-muted);
@@ -257,6 +274,11 @@
     border-radius: var(--radius-sm);
     transition: all 0.2s ease;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -0.5rem;
+    margin-left: 0;
   }
 
   .todo-item:hover .delete-btn,
