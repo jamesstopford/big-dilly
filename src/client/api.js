@@ -180,6 +180,48 @@ export const template = {
     })
 };
 
+// Trackers API
+export const trackers = {
+  /**
+   * Get all trackers for current user
+   */
+  getAll: () => request('/trackers'),
+
+  /**
+   * Create a new tracker
+   */
+  create: (name, icon) =>
+    request('/trackers', {
+      method: 'POST',
+      body: { name, icon }
+    }),
+
+  /**
+   * Update a tracker (name and/or icon)
+   */
+  update: (id, data) =>
+    request(`/trackers/${id}`, {
+      method: 'PUT',
+      body: data
+    }),
+
+  /**
+   * Delete a tracker
+   */
+  delete: (id) =>
+    request(`/trackers/${id}`, {
+      method: 'DELETE'
+    }),
+
+  /**
+   * Reset a tracker's last_reset to now
+   */
+  reset: (id) =>
+    request(`/trackers/${id}/reset`, {
+      method: 'POST'
+    })
+};
+
 // Health check
 export const health = () => request('/health');
 
@@ -188,5 +230,6 @@ export default {
   user,
   todos,
   template,
+  trackers,
   health
 };

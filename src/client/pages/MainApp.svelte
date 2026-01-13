@@ -3,6 +3,7 @@
   import { theme, THEMES } from '../stores/theme.js';
   import Header from '../components/Header.svelte';
   import TodoList from '../components/TodoList.svelte';
+  import TrackerList from '../components/TrackerList.svelte';
 </script>
 
 <div class="app-layout">
@@ -16,15 +17,9 @@
           <TodoList />
         </section>
 
-        <!-- TimeSince Panel Placeholder -->
+        <!-- TimeSince Panel -->
         <section class="panel">
-          <div class="panel-header">
-            <h2>TimeSince</h2>
-            <span class="count">0/20</span>
-          </div>
-          <div class="panel-content">
-            <p class="placeholder-text">TimeSince functionality coming in Phase 3</p>
-          </div>
+          <TrackerList />
         </section>
       </div>
     </div>
@@ -61,41 +56,5 @@
     border-radius: var(--radius-lg);
     padding: 1.5rem;
     box-shadow: var(--shadow-md);
-  }
-
-  .panel-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .panel-header h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 0;
-  }
-
-  .count {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    background-color: var(--bg-tertiary);
-    padding: 0.25rem 0.75rem;
-    border-radius: var(--radius-md);
-  }
-
-  .panel-content {
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .placeholder-text {
-    color: var(--text-muted);
-    font-style: italic;
   }
 </style>
