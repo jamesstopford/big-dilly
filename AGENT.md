@@ -17,7 +17,8 @@ npm run dev:client   # Run Vite build watch
 
 ### Build
 ```bash
-npm run build        # Build Svelte frontend to public/
+npm run build           # Build Svelte frontend to public/
+npm run build:analyze   # Build with bundle size analysis (opens stats.html)
 ```
 
 ### Start Production
