@@ -120,15 +120,17 @@ function createTrackersStore() {
         const data = await trackersApi.getAll();
         update(state => ({
           ...state,
-          items: data.trackers,
+          items: data?.trackers || [],
           loading: false
         }));
+        return { success: true };
       } catch (error) {
         update(state => ({
           ...state,
           loading: false,
           error: error.message || 'Failed to load trackers'
         }));
+        return { success: false, error: error.message };
       }
     },
 
@@ -136,16 +138,18 @@ function createTrackersStore() {
      * Create a new tracker
      */
     async create(name, icon) {
-      const trimmedName = name.trim();
+      const trimmedName = name?.trim();
       if (!trimmedName) return { success: false, error: 'Tracker name is required' };
       if (!icon) return { success: false, error: 'Tracker icon is required' };
 
       try {
         const data = await trackersApi.create(trimmedName, icon);
-        update(state => ({
-          ...state,
-          items: [...state.items, data.tracker]
-        }));
+        if (data?.tracker) {
+          update(state => ({
+            ...state,
+            items: [...state.items, data.tracker]
+          }));
+        }
         return { success: true };
       } catch (error) {
         return { success: false, error: error.message || 'Failed to create tracker' };
