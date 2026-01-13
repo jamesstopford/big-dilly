@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build output (keep index.html)
+public/bundle.js
+public/bundle.css
+public/main.css
+
+# Database
+data/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test coverage
+coverage/
