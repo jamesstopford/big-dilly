@@ -2,27 +2,20 @@ import { writable, derived } from 'svelte/store';
 
 /**
  * Base path for subdirectory deployment
- * Detect from current script location or default to root
+ * Detect from the module URL (works in ES modules unlike document.currentScript)
  */
 const BASE_PATH = (() => {
-  if (typeof window !== 'undefined') {
-    // Detect base path from the current URL on initial load
-    // If we're at /big-dilly/anything, the base is /big-dilly
-    const scriptSrc = document.currentScript?.src || '';
-    if (scriptSrc) {
-      try {
-        const url = new URL(scriptSrc);
-        const pathParts = url.pathname.split('/');
-        // Remove the script filename and get the directory
-        pathParts.pop(); // remove bundle.js
-        const basePath = pathParts.join('/');
-        return basePath || '';
-      } catch (e) {
-        // Fall back to empty base path
-      }
-    }
+  try {
+    // import.meta.url gives us the URL of this module (e.g., https://example.com/big-dilly/bundle.js)
+    const moduleUrl = new URL(import.meta.url);
+    const pathParts = moduleUrl.pathname.split('/');
+    // Remove the filename (bundle.js) to get the directory
+    pathParts.pop();
+    const basePath = pathParts.join('/');
+    return basePath || '';
+  } catch (e) {
+    return '';
   }
-  return '';
 })();
 
 /**
