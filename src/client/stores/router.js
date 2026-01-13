@@ -1,13 +1,37 @@
 import { writable, derived } from 'svelte/store';
 
 /**
- * Simple client-side router
+ * Base path for subdirectory deployment
+ * Detect from the module URL (works in ES modules unlike document.currentScript)
+ */
+const BASE_PATH = (() => {
+  try {
+    // import.meta.url gives us the URL of this module (e.g., https://example.com/big-dilly/bundle.js)
+    const moduleUrl = new URL(import.meta.url);
+    const pathParts = moduleUrl.pathname.split('/');
+    // Remove the filename (bundle.js) to get the directory
+    pathParts.pop();
+    const basePath = pathParts.join('/');
+    return basePath || '';
+  } catch (e) {
+    return '';
+  }
+})();
+
+/**
+ * Simple client-side router with base path support
  */
 function createRouter() {
-  // Get initial path from browser
+  // Get path relative to base
   const getPath = () => {
     if (typeof window !== 'undefined') {
-      return window.location.pathname;
+      const fullPath = window.location.pathname;
+      // Strip base path prefix if present
+      if (BASE_PATH && fullPath.startsWith(BASE_PATH)) {
+        const path = fullPath.slice(BASE_PATH.length);
+        return path || '/';
+      }
+      return fullPath;
     }
     return '/';
   };
@@ -36,15 +60,18 @@ function createRouter() {
     subscribe,
 
     /**
-     * Navigate to a new path
+     * Navigate to a new path (automatically prepends base path)
      */
     navigate(path, replace = false) {
       if (typeof window !== 'undefined') {
+        // Prepend base path for browser URL
+        const fullPath = BASE_PATH + path;
         if (replace) {
-          window.history.replaceState(null, '', path);
+          window.history.replaceState(null, '', fullPath);
         } else {
-          window.history.pushState(null, '', path);
+          window.history.pushState(null, '', fullPath);
         }
+        // Store the path without base prefix for route matching
         set({ path, query: getQuery() });
       }
     },
