@@ -4,6 +4,9 @@
   import { theme } from './stores/theme.js';
   import { router, currentPath } from './stores/router.js';
 
+  // Components
+  import NetworkStatus from './components/NetworkStatus.svelte';
+
   // Pages
   import LoginPage from './pages/LoginPage.svelte';
   import RegisterPage from './pages/RegisterPage.svelte';
@@ -41,6 +44,9 @@
     }
   }
 </script>
+
+<!-- Network status banner - always visible regardless of auth state -->
+<NetworkStatus />
 
 {#if $auth.loading}
   <div class="loading-screen">

@@ -60,6 +60,8 @@ input, textarea {
   --danger: #ef4444;
   --danger-light: rgba(239, 68, 68, 0.1);
   --warning: #f59e0b;
+  --warning-light: rgba(245, 158, 11, 0.1);
+  --warning-text: #92400e;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
@@ -86,6 +88,8 @@ input, textarea {
   --danger: #f87171;
   --danger-light: rgba(248, 113, 113, 0.15);
   --warning: #fbbf24;
+  --warning-light: rgba(251, 191, 36, 0.15);
+  --warning-text: #fbbf24;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
@@ -109,9 +113,12 @@ input, textarea {
   --danger: #ff0066;
   --danger-light: rgba(255, 0, 102, 0.1);
   --warning: #ffaa00;
+  --warning-light: rgba(255, 170, 0, 0.1);
+  --warning-text: #ffaa00;
   --glow-accent: 0 0 10px #00ffff, 0 0 20px rgba(0, 255, 255, 0.3);
   --glow-success: 0 0 10px #00ff88, 0 0 20px rgba(0, 255, 136, 0.3);
   --glow-danger: 0 0 10px #ff0066, 0 0 20px rgba(255, 0, 102, 0.3);
+  --glow-warning: 0 0 10px #ffaa00, 0 0 20px rgba(255, 170, 0, 0.3);
   --shadow-sm: 0 1px 2px rgba(0, 255, 255, 0.1);
   --shadow-md: 0 4px 6px rgba(0, 255, 255, 0.15);
   --shadow-lg: 0 10px 15px rgba(0, 255, 255, 0.2);
@@ -270,6 +277,12 @@ input, textarea {
   background-color: var(--success-light);
   color: var(--success);
   border: 1px solid var(--success);
+}
+
+.alert-warning {
+  background-color: var(--warning-light);
+  color: var(--warning-text, #92400e);
+  border: 1px solid var(--warning);
 }
 
 /* Loading spinner */
