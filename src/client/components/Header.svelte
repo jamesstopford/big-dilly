@@ -84,6 +84,7 @@
   }
 
   .logout-btn {
-    padding: 0.5rem 1rem;
+    padding: 0.625rem 1rem;
+    min-height: 44px;
   }
 </style>

@@ -294,7 +294,14 @@
     font-size: 1.25rem;
     color: inherit;
     cursor: pointer;
-    padding: 0 0.5rem;
+    padding: 0.5rem;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -0.5rem;
+    margin-left: 0;
   }
 
   .add-todo {
@@ -309,6 +316,8 @@
 
   .add-btn {
     padding: 0.75rem;
+    min-width: 44px;
+    min-height: 44px;
     flex-shrink: 0;
   }
 

@@ -122,7 +122,7 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 ### 4.2 Responsive Design
 - [x] Mobile layout (< 768px): single column, todos above trackers
 - [x] Desktop layout (>= 768px): two columns side by side
-- [ ] Touch-friendly tap targets (min 44px)
+- [x] Touch-friendly tap targets (min 44px)
 - [ ] Test on various screen sizes
 
 ### 4.3 Error Handling & UX
