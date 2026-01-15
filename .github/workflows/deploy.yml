@@ -47,6 +47,7 @@ jobs:
         run: |
           ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'ENDSSH'
           cd /var/www/big-dilly
+          git config --global --add safe.directory /var/www/big-dilly
           git pull origin master
           npm install --production=false
           npm run build
