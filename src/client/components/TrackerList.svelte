@@ -85,7 +85,7 @@
 
 <div class="tracker-panel">
   <div class="panel-header">
-    <h2>TimeSince</h2>
+    <h2>Its Been a While..</h2>
     <span class="count">{$trackerCount}/{MAX_TRACKERS}</span>
   </div>
 
