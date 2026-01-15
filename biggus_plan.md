@@ -52,7 +52,7 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 
 ### 2.1 Todo API
 - [x] GET `/api/todos` - Get all todos for current user
-- [x] POST `/api/todos` - Create new todo (enforce max 20)
+- [x] POST `/api/todos` - Create new todo (enforce max 10)
 - [x] PUT `/api/todos/:id` - Update todo (text, completed)
 - [x] DELETE `/api/todos/:id` - Delete todo
 - [x] PUT `/api/todos/reorder` - Update sort order for all todos
@@ -64,7 +64,7 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 - [x] Add todo input field
 - [x] Inline editing on text click
 - [x] Completed state styling (strikethrough, dimmed)
-- [x] Count display (X/20 todos)
+- [x] Count display (X/10 todos)
 
 ### 2.3 Drag-and-Drop
 - [x] Integrate SortableJS or similar lightweight library
@@ -87,7 +87,7 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 
 ### 3.1 Tracker API
 - [x] GET `/api/trackers` - Get all trackers for current user
-- [x] POST `/api/trackers` - Create new tracker (enforce max 20)
+- [x] POST `/api/trackers` - Create new tracker (enforce max 10)
 - [x] PUT `/api/trackers/:id` - Update tracker (name, icon)
 - [x] DELETE `/api/trackers/:id` - Delete tracker
 - [x] POST `/api/trackers/:id/reset` - Reset last_reset to now
@@ -98,7 +98,7 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 - [x] Add tracker form with icon picker
 - [x] Icon selection grid (~20 icons for common habits)
 - [x] Inline editing for name/icon
-- [x] Count display (X/20 trackers)
+- [x] Count display (X/10 trackers)
 
 ### 3.3 Elapsed Time Display
 - [x] Calculate elapsed time from last_reset
@@ -146,13 +146,14 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 - [x] Users can register, log in, log out, and reset passwords
 - [x] Users can create, edit, delete, complete, and reorder todos
 - [x] Users can save todos as template and reset to template
-- [x] Maximum 20 todos enforced
+- [x] Maximum 10 todos enforced
 - [x] Users can create, edit, delete, and reset TimeSince trackers
 - [x] Trackers display elapsed time in "X days, Y hours" format
-- [x] Maximum 20 trackers enforced
+- [x] Maximum 10 trackers enforced
 - [x] All three themes work correctly
+- [x] Cyber-Neon theme Reset buttons have black text for readability
 - [x] Application is responsive on mobile and desktop
-- [ ] All data persists correctly across sessions
+- [x] All data persists correctly across sessions
 
 ---
 

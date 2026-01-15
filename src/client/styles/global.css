@@ -134,7 +134,8 @@ input, textarea {
 }
 
 [data-theme="cyber-neon"] .btn-primary,
-[data-theme="cyber-neon"] .btn-danger {
+[data-theme="cyber-neon"] .btn-danger,
+[data-theme="cyber-neon"] .btn-reset {
   color: #000000;
 }
 

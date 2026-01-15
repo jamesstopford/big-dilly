@@ -57,7 +57,7 @@ npm run test:watch   # Run tests in watch mode
 
 ### Todos
 - `GET /api/todos` - Get all todos for current user
-- `POST /api/todos` - Create new todo (max 20)
+- `POST /api/todos` - Create new todo (max 10)
 - `PUT /api/todos/:id` - Update todo (text, completed)
 - `DELETE /api/todos/:id` - Delete todo
 - `PUT /api/todos/reorder` - Update sort order (body: { todoIds: [...] })
@@ -69,7 +69,7 @@ npm run test:watch   # Run tests in watch mode
 
 ### Trackers
 - `GET /api/trackers` - Get all trackers for current user
-- `POST /api/trackers` - Create new tracker (max 20)
+- `POST /api/trackers` - Create new tracker (max 10)
 - `PUT /api/trackers/:id` - Update tracker (name, icon)
 - `DELETE /api/trackers/:id` - Delete tracker
 - `POST /api/trackers/:id/reset` - Reset tracker's last_reset to now

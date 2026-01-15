@@ -4,7 +4,7 @@ import { todos as todosApi, template as templateApi } from '../api.js';
 /**
  * Maximum number of todos allowed per user
  */
-export const MAX_TODOS = 20;
+export const MAX_TODOS = 10;
 
 /**
  * Create the todos store with all CRUD operations

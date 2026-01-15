@@ -8,6 +8,18 @@ The guiding principle is **simplicity**: minimal frameworks, straightforward use
 
 ---
 
+## Remaining Work Summary
+
+The following items are **not yet complete** and require implementation:
+
+### New Features
+| Feature | Section | Priority |
+|---------|---------|----------|
+| Data Synchronization | FR-6 | P1 - Polling-based sync across devices |
+| Visual Time Indicator | FR-7 | P1 - Pie-chart progress indicator for trackers |
+
+---
+
 ## Project Goals and Success Criteria
 
 ### Goals
@@ -48,60 +60,96 @@ The guiding principle is **simplicity**: minimal frameworks, straightforward use
 
 ## Functional Requirements
 
-### FR-1: User Authentication
+### FR-1: User Authentication ✅ COMPLETE
 
-| ID | Requirement | Priority |
-|----|-------------|----------|
-| FR-1.1 | Users can register with email and password | P1 |
-| FR-1.2 | Users can log in with email and password | P1 |
-| FR-1.3 | Users can log out | P1 |
-| FR-1.4 | Users can reset forgotten password via email | P1 |
-| FR-1.5 | Sessions persist across browser sessions until explicit logout | P1 |
+| ID | Requirement | Priority | Status |
+|----|-------------|----------|--------|
+| FR-1.1 | Users can register with email and password | P1 | Done |
+| FR-1.2 | Users can log in with email and password | P1 | Done |
+| FR-1.3 | Users can log out | P1 | Done |
+| FR-1.4 | Users can reset forgotten password via email | P1 | Done |
+| FR-1.5 | Sessions persist across browser sessions until explicit logout | P1 | Done |
 
-### FR-2: Todo Management
+### FR-2: Todo Management ✅ COMPLETE
 
-| ID | Requirement | Priority |
-|----|-------------|----------|
-| FR-2.1 | Users can create a new todo item (text input) | P1 |
-| FR-2.2 | Users can edit an existing todo item's text | P1 |
-| FR-2.3 | Users can delete a todo item | P1 |
-| FR-2.4 | Users can mark a todo item as complete/incomplete (toggle) | P1 |
-| FR-2.5 | Users can reorder todo items via drag-and-drop | P1 |
-| FR-2.6 | Completed todos are visually distinguished (strikethrough, dimmed) | P1 |
-| FR-2.7 | Maximum of 20 todos per user enforced | P1 |
-| FR-2.8 | Todo order persists across sessions | P1 |
+| ID | Requirement | Priority | Status |
+|----|-------------|----------|--------|
+| FR-2.1 | Users can create a new todo item (text input) | P1 | Done |
+| FR-2.2 | Users can edit an existing todo item's text | P1 | Done |
+| FR-2.3 | Users can delete a todo item | P1 | Done |
+| FR-2.4 | Users can mark a todo item as complete/incomplete (toggle) | P1 | Done |
+| FR-2.5 | Users can reorder todo items via drag-and-drop | P1 | Done |
+| FR-2.6 | Completed todos are visually distinguished (strikethrough, dimmed) | P1 | Done |
+| FR-2.7 | Maximum of 10 todos per user enforced | P1 | Done |
+| FR-2.8 | Todo order persists across sessions | P1 | Done |
 
-### FR-3: Template System
+### FR-3: Template System ✅ COMPLETE
 
-| ID | Requirement | Priority |
-|----|-------------|----------|
-| FR-3.1 | Users can save current todo list as their template | P1 |
-| FR-3.2 | Users can reset todos to template (replaces all current todos) | P1 |
-| FR-3.3 | Each user has exactly one template | P1 |
-| FR-3.4 | Template saves todo text and order only (not completion state) | P1 |
-| FR-3.5 | No confirmation dialog on reset or save | P1 |
-| FR-3.6 | Visual feedback confirms template save/reset completed | P1 |
+| ID | Requirement | Priority | Status |
+|----|-------------|----------|--------|
+| FR-3.1 | Users can save current todo list as their template | P1 | Done |
+| FR-3.2 | Users can reset todos to template (replaces all current todos) | P1 | Done |
+| FR-3.3 | Each user has exactly one template | P1 | Done |
+| FR-3.4 | Template saves todo text and order only (not completion state) | P1 | Done |
+| FR-3.5 | No confirmation dialog on reset or save | P1 | Done |
+| FR-3.6 | Visual feedback confirms template save/reset completed | P1 | Done |
 
-### FR-4: TimeSince Trackers
+### FR-4: TimeSince Trackers ✅ COMPLETE
 
-| ID | Requirement | Priority |
-|----|-------------|----------|
-| FR-4.1 | Users can create a new tracker with name and icon | P1 |
-| FR-4.2 | Users can edit a tracker's name and icon | P1 |
-| FR-4.3 | Users can delete a tracker | P1 |
-| FR-4.4 | Users can reset a tracker to "now" (current timestamp) | P1 |
-| FR-4.5 | Trackers display elapsed time in "X days, Y hours" format | P1 |
-| FR-4.6 | Elapsed time updates in real-time (or near real-time) | P1 |
-| FR-4.7 | Maximum of 20 trackers per user enforced | P1 |
-| FR-4.8 | Icon selection from predefined icon set | P1 |
+| ID | Requirement | Priority | Status |
+|----|-------------|----------|--------|
+| FR-4.1 | Users can create a new tracker with name and icon | P1 | Done |
+| FR-4.2 | Users can edit a tracker's name and icon | P1 | Done |
+| FR-4.3 | Users can delete a tracker | P1 | Done |
+| FR-4.4 | Users can reset a tracker to "now" (current timestamp) | P1 | Done |
+| FR-4.5 | Trackers display elapsed time in "X days, Y hours" format | P1 | Done |
+| FR-4.6 | Elapsed time updates in real-time (or near real-time) | P1 | Done |
+| FR-4.7 | Maximum of 10 trackers per user enforced | P1 | Done |
+| FR-4.8 | Icon selection from predefined icon set | P1 | Done |
 
-### FR-5: Theming
+### FR-5: Theming ✅ COMPLETE
 
-| ID | Requirement | Priority |
-|----|-------------|----------|
-| FR-5.1 | Users can select from three themes: Light, Dark, Cyber-Neon | P1 |
-| FR-5.2 | Theme preference persists across sessions | P1 |
-| FR-5.3 | Theme applies immediately upon selection | P1 |
+| ID | Requirement | Priority | Status |
+|----|-------------|----------|--------|
+| FR-5.1 | Users can select from three themes: Light, Dark, Cyber-Neon | P1 | Done |
+| FR-5.2 | Theme preference persists across sessions | P1 | Done |
+| FR-5.3 | Theme applies immediately upon selection | P1 | Done |
+| FR-5.4 | Cyber-Neon theme: TimeSince "Reset" buttons must use black text for readability | P1 | Done |
+
+### FR-6: Data Synchronization ❌ NOT IMPLEMENTED
+
+| ID | Requirement | Priority | Status |
+|----|-------------|----------|--------|
+| FR-6.1 | Changes made on one device should appear on other devices without manual refresh | P1 | **TODO** |
+| FR-6.2 | Implement automatic polling mechanism to check for server-side updates | P1 | **TODO** |
+| FR-6.3 | Polling interval should be configurable (default: 30 seconds) | P2 | **TODO** |
+| FR-6.4 | Visual indicator when data is being synced or when new data is detected | P2 | **TODO** |
+| FR-6.5 | Manual refresh button available for users who want immediate sync | P1 | **TODO** |
+| FR-6.6 | Graceful handling of sync conflicts (last-write-wins acceptable for P1) | P1 | **TODO** |
+
+**Implementation Notes for Sync:**
+- Polling-based approach is acceptable for P1 (WebSockets can be considered for P2)
+- Each data fetch should include a timestamp or version check to minimize unnecessary re-renders
+- Consider using ETag or Last-Modified headers for efficient cache validation
+- When app regains focus (tab becomes active), trigger an immediate sync
+
+### FR-7: Visual Time Indicator ❌ NOT IMPLEMENTED
+
+| ID | Requirement | Priority | Status |
+|----|-------------|----------|--------|
+| FR-7.1 | TimeSince trackers display a circular progress/pie-chart indicator showing elapsed time | P1 | **TODO** |
+| FR-7.2 | Indicator fills progressively: one color for minutes, different color for hours, days, weeks, etc. | P1 | **TODO** |
+| FR-7.3 | Color transitions occur at meaningful thresholds (60 min → hours, 24 hours → days, 7 days → weeks) | P1 | **TODO** |
+| FR-7.4 | Visual indicator implementation must be modular and easily removable/tweakable | P1 | **TODO** |
+| FR-7.5 | Indicator should be implemented as a standalone component with configurable thresholds and colors | P1 | **TODO** |
+
+**Visual Indicator Design Notes:**
+- The pie chart fills clockwise as time progresses
+- Suggested color progression: Green (minutes) → Blue (hours) → Yellow (days) → Orange (weeks) → Red (months+)
+- When transitioning between time units, the previous fill completes and the new color begins filling
+- Component should accept props for: thresholds, colors, size, and whether to display
+- Keep CSS and logic isolated so the feature can be easily toggled off or modified
+- Consider adding a subtle animation for the fill progression
 
 ---
 
@@ -454,8 +502,8 @@ Use simple SVG icons or a lightweight icon font.
 ## Constraints and Assumptions
 
 ### Constraints
-- Maximum 20 todos per user
-- Maximum 20 trackers per user
+- Maximum 10 todos per user
+- Maximum 10 trackers per user
 - Single template per user
 - SQLite database (single file)
 - No real-time collaboration features
@@ -532,13 +580,16 @@ These features are explicitly NOT in scope but may be considered for future vers
 
 The project is complete when:
 
-1. [ ] Users can register, log in, log out, and reset passwords
-2. [ ] Users can create, edit, delete, complete, and reorder todos
-3. [ ] Users can save todos as template and reset to template
-4. [ ] Maximum 20 todos enforced
-5. [ ] Users can create, edit, delete, and reset TimeSince trackers
-6. [ ] Trackers display elapsed time in "X days, Y hours" format
-7. [ ] Maximum 20 trackers enforced
-8. [ ] All three themes work correctly
-9. [ ] Application is responsive on mobile and desktop
-10. [ ] All data persists correctly across sessions
+1. [x] Users can register, log in, log out, and reset passwords
+2. [x] Users can create, edit, delete, complete, and reorder todos
+3. [x] Users can save todos as template and reset to template
+4. [x] Maximum 10 todos enforced
+5. [x] Users can create, edit, delete, and reset TimeSince trackers
+6. [x] Trackers display elapsed time in "X days, Y hours" format
+7. [x] Maximum 10 trackers enforced
+8. [x] All three themes work correctly
+9. [x] Application is responsive on mobile and desktop
+10. [x] All data persists correctly across sessions
+11. [ ] Data syncs automatically across devices (polling-based)
+12. [x] Cyber-Neon theme Reset buttons have black text for readability
+13. [ ] TimeSince trackers include visual pie-chart time indicator (modular/removable)

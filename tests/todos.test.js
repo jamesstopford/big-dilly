@@ -157,9 +157,9 @@ describe('Todo API', () => {
       expect(res.body.error).toContain('500');
     });
 
-    it('should enforce maximum of 20 todos', async () => {
-      // Create 20 todos
-      for (let i = 0; i < 20; i++) {
+    it('should enforce maximum of 10 todos', async () => {
+      // Create 10 todos
+      for (let i = 0; i < 10; i++) {
         run('INSERT INTO todos (user_id, text, sort_order) VALUES (?, ?, ?)', [1, `Todo ${i}`, i]);
       }
 
@@ -169,7 +169,7 @@ describe('Todo API', () => {
 
       expect(res.status).toBe(400);
       expect(res.body.error).toContain('Maximum');
-      expect(res.body.error).toContain('20');
+      expect(res.body.error).toContain('10');
     });
   });
 
