@@ -133,6 +133,11 @@ input, textarea {
   box-shadow: var(--glow-accent);
 }
 
+[data-theme="cyber-neon"] .btn-primary,
+[data-theme="cyber-neon"] .btn-danger {
+  color: #000000;
+}
+
 /* Utility Classes */
 .container {
   width: 100%;
