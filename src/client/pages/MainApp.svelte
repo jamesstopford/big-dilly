@@ -24,9 +24,21 @@
       </div>
     </div>
   </main>
+
+  <footer class="app-footer">
+    <p>Deployed via GitHub Actions CI/CD Pipeline</p>
+  </footer>
 </div>
 
 <style>
+  .app-footer {
+    text-align: center;
+    padding: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+  }
   .app-layout {
     min-height: 100vh;
     display: flex;
