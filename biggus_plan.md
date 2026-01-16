@@ -154,6 +154,7 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 - [x] Cyber-Neon theme Reset buttons have black text for readability
 - [x] Application is responsive on mobile and desktop
 - [x] All data persists correctly across sessions
+- [x] Data syncs automatically across devices (polling-based)
 
 ---
 
@@ -173,6 +174,43 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 - [ ] Last icon in each row is cut off - needs wider container
 - [ ] Ensure icon grid displays all icons fully visible
 - [ ] Verify fix works on both TrackerList (add form) and TrackerItem (edit mode)
+
+---
+
+## Phase 6: Data Synchronization [COMPLETE]
+
+### 6.1 Sync Store (FR-6.1, FR-6.2)
+- [x] Create sync store (`src/client/stores/sync.js`)
+- [x] Implement polling mechanism with configurable interval (default 30s)
+- [x] Load todos and trackers in parallel during sync
+- [x] Hash-based change detection to minimize re-renders
+
+### 6.2 Visual Feedback (FR-6.4)
+- [x] Create SyncIndicator component (`src/client/components/SyncIndicator.svelte`)
+- [x] Show syncing spinner during sync operations
+- [x] Show checkmark briefly after successful sync
+- [x] Show error indicator on sync failures
+- [x] Display last sync time ("Just now", "Xs ago", "Xm ago", etc.)
+
+### 6.3 Manual Refresh (FR-6.5)
+- [x] Add refresh button in header (SyncIndicator component)
+- [x] Refresh button disabled during sync to prevent double-click
+- [x] Button shows spinning icon during sync
+
+### 6.4 Focus-Triggered Sync
+- [x] Listen for `visibilitychange` event on document
+- [x] Listen for `focus` event on window
+- [x] Trigger immediate sync when tab becomes active
+
+### 6.5 Conflict Handling (FR-6.6)
+- [x] Implement last-write-wins strategy (server data always wins on refresh)
+- [x] Graceful error handling with user feedback
+- [x] Network offline detection and skip sync when offline
+
+### 6.6 Integration
+- [x] Initialize sync store in MainApp.svelte onMount
+- [x] Clean up sync store (stop polling, remove listeners) on destroy
+- [x] Reset sync store on user logout
 
 ---
 

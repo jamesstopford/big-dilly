@@ -1,9 +1,13 @@
 <script>
   import { auth, currentUser } from '../stores/auth.js';
   import { theme, THEMES } from '../stores/theme.js';
+  import { syncStore } from '../stores/sync.js';
   import ThemeToggle from './ThemeToggle.svelte';
+  import SyncIndicator from './SyncIndicator.svelte';
 
   async function handleLogout() {
+    // Reset sync store before logout to stop polling
+    syncStore.reset();
     await auth.logout();
   }
 </script>
@@ -15,6 +19,10 @@
     </div>
 
     <div class="header-right">
+      <SyncIndicator />
+
+      <div class="header-divider"></div>
+
       <ThemeToggle />
 
       <div class="user-info">
@@ -86,5 +94,11 @@
   .logout-btn {
     padding: 0.625rem 1rem;
     min-height: 44px;
+  }
+
+  .header-divider {
+    width: 1px;
+    height: 24px;
+    background-color: var(--border);
   }
 </style>
