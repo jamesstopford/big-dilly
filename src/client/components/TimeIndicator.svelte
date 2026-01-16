@@ -90,12 +90,39 @@
       return;
     }
 
-    const resetDate = new Date(lastReset + 'Z'); // Ensure UTC parsing
-    const now = new Date();
-    const diff = now - resetDate;
+    try {
+      // Normalize date format to handle both SQLite ('2024-01-15 10:30:45')
+      // and ISO ('2024-01-15T10:30:45') formats from server vs client
+      let normalizedDate = lastReset;
 
-    // Handle future dates (shouldn't happen but be safe)
-    elapsedMs = Math.max(0, diff);
+      // Replace space with 'T' if needed (SQLite format)
+      if (normalizedDate.includes(' ') && !normalizedDate.includes('T')) {
+        normalizedDate = normalizedDate.replace(' ', 'T');
+      }
+
+      // Add 'Z' suffix if not present to ensure UTC parsing
+      if (!normalizedDate.endsWith('Z')) {
+        normalizedDate = normalizedDate + 'Z';
+      }
+
+      const resetDate = new Date(normalizedDate);
+
+      // Validate the parsed date
+      if (isNaN(resetDate.getTime())) {
+        console.warn('[TimeIndicator] Invalid date format:', lastReset);
+        elapsedMs = 0;
+        return;
+      }
+
+      const now = new Date();
+      const diff = now - resetDate;
+
+      // Handle future dates (shouldn't happen but be safe)
+      elapsedMs = Math.max(0, diff);
+    } catch (error) {
+      console.warn('[TimeIndicator] Error parsing date:', lastReset, error);
+      elapsedMs = 0;
+    }
   }
 
   // Determine which time unit level we're in
