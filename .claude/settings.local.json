@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(cartographer:cartographer)",
+      "Bash(uv run:*)",
+      "Bash(uv pip install:*)",
+      "Bash(pip3 install:*)",
+      "Bash(python3:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)",
+      "Bash(git checkout:*)",
+      "Bash(git pull:*)",
+      "Bash(npm *)",
+      "Bash(npm install)",
+      "Bash(npx vitest run tests/sync.test.js)",
+      "Bash(where gh:*)"
+    ]
+  },
+  "enabledPlugins": {
+    "cartographer@cartographer-marketplace": true
+  }
+}
