@@ -75,25 +75,25 @@
     months: '#ef4444'    // Red - long time elapsed
   };
 
-  // Internal state
-  let elapsedMs = 0;
+  // Internal state - tick forces reactivity updates on interval
+  let tick = 0;
   let updateInterval;
 
   // Merge custom config with defaults
   $: activeThresholds = thresholds || DEFAULT_THRESHOLDS;
   $: activeColors = colors || DEFAULT_COLORS;
 
-  // Calculate elapsed time in milliseconds
-  function calculateElapsedMs() {
-    if (!lastReset) {
-      elapsedMs = 0;
-      return;
-    }
+  /**
+   * Parse date string handling both SQLite and ISO formats
+   * Returns timestamp in ms, or null if invalid
+   */
+  function parseResetDate(dateStr) {
+    if (!dateStr) return null;
 
     try {
       // Normalize date format to handle both SQLite ('2024-01-15 10:30:45')
       // and ISO ('2024-01-15T10:30:45') formats from server vs client
-      let normalizedDate = lastReset;
+      let normalizedDate = dateStr;
 
       // Replace space with 'T' if needed (SQLite format)
       if (normalizedDate.includes(' ') && !normalizedDate.includes('T')) {
@@ -109,21 +109,20 @@
 
       // Validate the parsed date
       if (isNaN(resetDate.getTime())) {
-        console.warn('[TimeIndicator] Invalid date format:', lastReset);
-        elapsedMs = 0;
-        return;
+        console.warn('[TimeIndicator] Invalid date format:', dateStr);
+        return null;
       }
 
-      const now = new Date();
-      const diff = now - resetDate;
-
-      // Handle future dates (shouldn't happen but be safe)
-      elapsedMs = Math.max(0, diff);
+      return resetDate.getTime();
     } catch (error) {
-      console.warn('[TimeIndicator] Error parsing date:', lastReset, error);
-      elapsedMs = 0;
+      console.warn('[TimeIndicator] Error parsing date:', dateStr, error);
+      return null;
     }
   }
+
+  // Reactive elapsed time calculation - recomputes when lastReset or tick changes
+  $: resetTimestamp = parseResetDate(lastReset);
+  $: elapsedMs = (tick >= 0 && resetTimestamp) ? Math.max(0, Date.now() - resetTimestamp) : 0;
 
   // Determine which time unit level we're in
   function getTimeLevel(ms) {
@@ -214,12 +213,12 @@
     months: 'months'
   }[timeLevel];
 
-  // Set up update interval
+  // Set up update interval - incrementing tick triggers reactive recalculation
   onMount(() => {
-    calculateElapsedMs();
-    // Update more frequently for smoother animation (every 10 seconds)
-    // This provides smooth visual feedback while being resource-efficient
-    updateInterval = setInterval(calculateElapsedMs, 10000);
+    // Update every 10 seconds for smooth visual feedback
+    updateInterval = setInterval(() => {
+      tick += 1;
+    }, 10000);
   });
 
   onDestroy(() => {
@@ -227,11 +226,6 @@
       clearInterval(updateInterval);
     }
   });
-
-  // Recalculate when lastReset changes
-  $: if (lastReset !== undefined) {
-    calculateElapsedMs();
-  }
 </script>
 
 {#if show && lastReset}
