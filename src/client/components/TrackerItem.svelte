@@ -1,8 +1,14 @@
 <script>
   import { createEventDispatcher, onMount, onDestroy } from 'svelte';
   import { formatElapsedTime, getIconById, TRACKER_ICONS } from '../stores/trackers.js';
+  import TimeIndicator from './TimeIndicator.svelte';
 
   export let tracker;
+
+  // Time indicator configuration - easily adjustable
+  // Set to false to hide the visual indicator entirely
+  export let showTimeIndicator = true;
+  export let timeIndicatorSize = 36;
 
   const dispatch = createEventDispatcher();
 
@@ -191,6 +197,15 @@
     </div>
   {:else}
     <span class="tracker-icon" aria-hidden="true">{iconData.emoji}</span>
+
+    <!-- Visual time indicator (FR-7) - modular and easily removable -->
+    {#if showTimeIndicator}
+      <TimeIndicator
+        lastReset={tracker.last_reset}
+        size={timeIndicatorSize}
+        show={showTimeIndicator}
+      />
+    {/if}
 
     <div class="tracker-info">
       <span

@@ -10,12 +10,7 @@ The guiding principle is **simplicity**: minimal frameworks, straightforward use
 
 ## Remaining Work Summary
 
-The following items are **not yet complete** and require implementation:
-
-### New Features
-| Feature | Section | Priority |
-|---------|---------|----------|
-| Visual Time Indicator | FR-7 | P1 - Pie-chart progress indicator for trackers |
+All P1 features have been implemented.
 
 ---
 
@@ -133,23 +128,25 @@ The following items are **not yet complete** and require implementation:
 - SyncIndicator component shows sync state (syncing spinner, synced checkmark, error)
 - Manual refresh button in header for immediate sync
 
-### FR-7: Visual Time Indicator ❌ NOT IMPLEMENTED
+### FR-7: Visual Time Indicator ✅ COMPLETE
 
 | ID | Requirement | Priority | Status |
 |----|-------------|----------|--------|
-| FR-7.1 | TimeSince trackers display a circular progress/pie-chart indicator showing elapsed time | P1 | **TODO** |
-| FR-7.2 | Indicator fills progressively: one color for minutes, different color for hours, days, weeks, etc. | P1 | **TODO** |
-| FR-7.3 | Color transitions occur at meaningful thresholds (60 min → hours, 24 hours → days, 7 days → weeks) | P1 | **TODO** |
-| FR-7.4 | Visual indicator implementation must be modular and easily removable/tweakable | P1 | **TODO** |
-| FR-7.5 | Indicator should be implemented as a standalone component with configurable thresholds and colors | P1 | **TODO** |
+| FR-7.1 | TimeSince trackers display a circular progress/pie-chart indicator showing elapsed time | P1 | Done |
+| FR-7.2 | Indicator fills progressively: one color for minutes, different color for hours, days, weeks, etc. | P1 | Done |
+| FR-7.3 | Color transitions occur at meaningful thresholds (60 min → hours, 24 hours → days, 7 days → weeks) | P1 | Done |
+| FR-7.4 | Visual indicator implementation must be modular and easily removable/tweakable | P1 | Done |
+| FR-7.5 | Indicator should be implemented as a standalone component with configurable thresholds and colors | P1 | Done |
 
-**Visual Indicator Design Notes:**
-- The pie chart fills clockwise as time progresses
-- Suggested color progression: Green (minutes) → Blue (hours) → Yellow (days) → Orange (weeks) → Red (months+)
-- When transitioning between time units, the previous fill completes and the new color begins filling
-- Component should accept props for: thresholds, colors, size, and whether to display
-- Keep CSS and logic isolated so the feature can be easily toggled off or modified
-- Consider adding a subtle animation for the fill progression
+**Implementation Notes:**
+- Standalone `TimeIndicator.svelte` component with fully configurable props
+- Color progression: Green (minutes) -> Blue (hours) -> Yellow (days) -> Orange (weeks) -> Red (months+)
+- SVG-based pie chart fills clockwise from 12 o'clock position
+- Subtle CSS animation for smooth fill transitions
+- Theme-aware styling (includes cyber-neon glow effects)
+- Easily toggleable via `showTimeIndicator` prop on TrackerItem
+- Configurable thresholds and colors via props for easy customization
+- Updates every 10 seconds for smooth visual feedback without performance impact
 
 ---
 
@@ -592,4 +589,4 @@ The project is complete when:
 10. [x] All data persists correctly across sessions
 11. [x] Data syncs automatically across devices (polling-based)
 12. [x] Cyber-Neon theme Reset buttons have black text for readability
-13. [ ] TimeSince trackers include visual pie-chart time indicator (modular/removable)
+13. [x] TimeSince trackers include visual pie-chart time indicator (modular/removable)
