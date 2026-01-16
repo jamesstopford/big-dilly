@@ -353,6 +353,10 @@
     box-shadow: 0 0 0 3px var(--accent-light);
   }
 
+  :global([data-theme="cyber-neon"]) .btn-reset {
+    color: #000000;
+  }
+
   .btn-icon {
     padding: 0.75rem;
     min-width: 44px;
