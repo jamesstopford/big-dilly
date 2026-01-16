@@ -4,7 +4,7 @@ import { trackers as trackersApi } from '../api.js';
 /**
  * Maximum number of trackers allowed per user
  */
-export const MAX_TRACKERS = 20;
+export const MAX_TRACKERS = 10;
 
 /**
  * Available icons for trackers

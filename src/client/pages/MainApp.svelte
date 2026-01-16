@@ -1,9 +1,27 @@
 <script>
+  import { onMount, onDestroy } from 'svelte';
   import { auth, currentUser } from '../stores/auth.js';
   import { theme, THEMES } from '../stores/theme.js';
+  import { syncStore } from '../stores/sync.js';
   import Header from '../components/Header.svelte';
   import TodoList from '../components/TodoList.svelte';
   import TrackerList from '../components/TrackerList.svelte';
+
+  /**
+   * Initialize sync when the main app mounts
+   * FR-6.1, FR-6.2: Automatic polling for cross-device sync
+   */
+  onMount(() => {
+    // Initialize sync store - this starts polling and performs initial sync
+    syncStore.init();
+  });
+
+  /**
+   * Clean up sync store when app unmounts
+   */
+  onDestroy(() => {
+    syncStore.destroy();
+  });
 </script>
 
 <div class="app-layout">

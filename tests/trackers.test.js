@@ -180,9 +180,9 @@ describe('Tracker API', () => {
       expect(res.body.error).toContain('icon');
     });
 
-    it('should enforce maximum of 20 trackers', async () => {
-      // Create 20 trackers
-      for (let i = 0; i < 20; i++) {
+    it('should enforce maximum of 10 trackers', async () => {
+      // Create 10 trackers
+      for (let i = 0; i < 10; i++) {
         run(INSERT_TRACKER_NOW, [1, `Tracker ${i}`, 'running']);
       }
 
@@ -192,7 +192,7 @@ describe('Tracker API', () => {
 
       expect(res.status).toBe(400);
       expect(res.body.error).toContain('Maximum');
-      expect(res.body.error).toContain('20');
+      expect(res.body.error).toContain('10');
     });
   });
 

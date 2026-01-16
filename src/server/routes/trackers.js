@@ -8,7 +8,7 @@ const router = express.Router();
 router.use(requireAuth);
 
 // Configuration
-const MAX_TRACKERS = 20;
+const MAX_TRACKERS = 10;
 
 /**
  * Validate tracker name
@@ -48,7 +48,7 @@ router.get('/', (req, res) => {
 
 /**
  * POST /api/trackers
- * Create a new tracker (enforces max 20)
+ * Create a new tracker (enforces max 10)
  */
 router.post('/', (req, res) => {
   try {

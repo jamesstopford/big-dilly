@@ -52,7 +52,7 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 
 ### 2.1 Todo API
 - [x] GET `/api/todos` - Get all todos for current user
-- [x] POST `/api/todos` - Create new todo (enforce max 20)
+- [x] POST `/api/todos` - Create new todo (enforce max 10)
 - [x] PUT `/api/todos/:id` - Update todo (text, completed)
 - [x] DELETE `/api/todos/:id` - Delete todo
 - [x] PUT `/api/todos/reorder` - Update sort order for all todos
@@ -64,7 +64,7 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 - [x] Add todo input field
 - [x] Inline editing on text click
 - [x] Completed state styling (strikethrough, dimmed)
-- [x] Count display (X/20 todos)
+- [x] Count display (X/10 todos)
 
 ### 2.3 Drag-and-Drop
 - [x] Integrate SortableJS or similar lightweight library
@@ -87,7 +87,7 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 
 ### 3.1 Tracker API
 - [x] GET `/api/trackers` - Get all trackers for current user
-- [x] POST `/api/trackers` - Create new tracker (enforce max 20)
+- [x] POST `/api/trackers` - Create new tracker (enforce max 10)
 - [x] PUT `/api/trackers/:id` - Update tracker (name, icon)
 - [x] DELETE `/api/trackers/:id` - Delete tracker
 - [x] POST `/api/trackers/:id/reset` - Reset last_reset to now
@@ -98,7 +98,7 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 - [x] Add tracker form with icon picker
 - [x] Icon selection grid (~20 icons for common habits)
 - [x] Inline editing for name/icon
-- [x] Count display (X/20 trackers)
+- [x] Count display (X/10 trackers)
 
 ### 3.3 Elapsed Time Display
 - [x] Calculate elapsed time from last_reset
@@ -146,13 +146,15 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 - [x] Users can register, log in, log out, and reset passwords
 - [x] Users can create, edit, delete, complete, and reorder todos
 - [x] Users can save todos as template and reset to template
-- [x] Maximum 20 todos enforced
+- [x] Maximum 10 todos enforced
 - [x] Users can create, edit, delete, and reset TimeSince trackers
 - [x] Trackers display elapsed time in "X days, Y hours" format
-- [x] Maximum 20 trackers enforced
+- [x] Maximum 10 trackers enforced
 - [x] All three themes work correctly
+- [x] Cyber-Neon theme Reset buttons have black text for readability
 - [x] Application is responsive on mobile and desktop
-- [ ] All data persists correctly across sessions
+- [x] All data persists correctly across sessions
+- [x] Data syncs automatically across devices (polling-based)
 
 ---
 
@@ -172,6 +174,43 @@ Web app with Todo and TimeSince functionality. Multi-user with email/password au
 - [ ] Last icon in each row is cut off - needs wider container
 - [ ] Ensure icon grid displays all icons fully visible
 - [ ] Verify fix works on both TrackerList (add form) and TrackerItem (edit mode)
+
+---
+
+## Phase 6: Data Synchronization [COMPLETE]
+
+### 6.1 Sync Store (FR-6.1, FR-6.2)
+- [x] Create sync store (`src/client/stores/sync.js`)
+- [x] Implement polling mechanism with configurable interval (default 30s)
+- [x] Load todos and trackers in parallel during sync
+- [x] Hash-based change detection to minimize re-renders
+
+### 6.2 Visual Feedback (FR-6.4)
+- [x] Create SyncIndicator component (`src/client/components/SyncIndicator.svelte`)
+- [x] Show syncing spinner during sync operations
+- [x] Show checkmark briefly after successful sync
+- [x] Show error indicator on sync failures
+- [x] Display last sync time ("Just now", "Xs ago", "Xm ago", etc.)
+
+### 6.3 Manual Refresh (FR-6.5)
+- [x] Add refresh button in header (SyncIndicator component)
+- [x] Refresh button disabled during sync to prevent double-click
+- [x] Button shows spinning icon during sync
+
+### 6.4 Focus-Triggered Sync
+- [x] Listen for `visibilitychange` event on document
+- [x] Listen for `focus` event on window
+- [x] Trigger immediate sync when tab becomes active
+
+### 6.5 Conflict Handling (FR-6.6)
+- [x] Implement last-write-wins strategy (server data always wins on refresh)
+- [x] Graceful error handling with user feedback
+- [x] Network offline detection and skip sync when offline
+
+### 6.6 Integration
+- [x] Initialize sync store in MainApp.svelte onMount
+- [x] Clean up sync store (stop polling, remove listeners) on destroy
+- [x] Reset sync store on user logout
 
 ---
 

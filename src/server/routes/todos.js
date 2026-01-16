@@ -8,7 +8,7 @@ const router = express.Router();
 router.use(requireAuth);
 
 // Configuration
-const MAX_TODOS = 20;
+const MAX_TODOS = 10;
 
 /**
  * Validate todo text
@@ -40,7 +40,7 @@ router.get('/', (req, res) => {
 
 /**
  * POST /api/todos
- * Create a new todo (enforces max 20)
+ * Create a new todo (enforces max 10)
  */
 router.post('/', (req, res) => {
   try {
