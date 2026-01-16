@@ -236,8 +236,8 @@ function createSyncStore() {
 
     if (document.visibilityState === 'visible') {
       console.log('[Sync] Tab became visible - triggering immediate sync');
-      // Perform a non-silent sync to show user we're refreshing
-      performSync({ silent: false });
+      // Perform silent sync to avoid UI flickering on tab switches
+      performSync({ silent: true });
     }
   }
 
@@ -248,7 +248,8 @@ function createSyncStore() {
     if (isDestroyed) return;
 
     console.log('[Sync] Window gained focus - triggering sync');
-    performSync({ silent: false });
+    // Perform silent sync to avoid UI flickering on window focus
+    performSync({ silent: true });
   }
 
   // Set up visibility and focus listeners
